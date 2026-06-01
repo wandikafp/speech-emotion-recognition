@@ -1,0 +1,53 @@
+/* CSS for SER Streamlit App */
+
+.main-header {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    padding: 2rem; 
+    border-radius: 12px; 
+    margin-bottom: 1.5rem; 
+    text-align: center;
+}
+.main-header h1 { 
+    color: #e94560; 
+    font-size: 2.2rem; 
+    margin: 0; 
+}
+.main-header p  { 
+    color: #a8b2d8; 
+    font-size: 1rem; 
+    margin: 0.5rem 0 0 0; 
+}
+.emotion-card {
+    background: linear-gradient(135deg, #1e3a5f, #0d2137);
+    border: 1px solid #e94560; 
+    border-radius: 10px;
+    padding: 1.2rem; 
+    text-align: center; 
+    margin: 0.3rem 0;
+}
+.emotion-card .label { 
+    color: #a8b2d8; 
+    font-size: 0.85rem; 
+    text-transform: uppercase; 
+}
+.emotion-card .value { 
+    color: #e94560; 
+    font-size: 2rem; 
+    font-weight: bold; 
+}
+.metric-box {
+    background: #16213e; 
+    border-radius: 8px;
+    padding: 1rem; 
+    border-left: 4px solid #e94560;
+}
+.agent-badge {
+    display: inline-block; 
+    padding: 0.4rem 1rem;
+    border-radius: 20px; 
+    font-weight: bold; 
+    font-size: 1rem;
+}
+.risk-high     { background: #c0392b; color: white; }
+.risk-moderate { background: #e67e22; color: white; }
+.risk-low      { background: #27ae60; color: white; }

@@ -193,7 +193,7 @@ BahdanauAttention = SoftAttention
 # ── Quick test ────────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
-    INPUT_SHAPE = (400, 40)   # 400 frames × 40 features (ETASR config)
+    INPUT_SHAPE = (400, 40)
     N_CLASSES   = 8
 
     print("=== A4 — Baseline (no attention) ===")

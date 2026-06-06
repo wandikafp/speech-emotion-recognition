@@ -1,0 +1,34 @@
+FROM python:3.10-slim
+
+# Set environment variables
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
+
+WORKDIR /app
+
+# Install system dependencies for audio processing
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libsndfile1 \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install python dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy only the necessary source code
+COPY src/ /app/src/
+COPY api/ /app/api/
+COPY dashboard/ /app/dashboard/
+
+# Copy only the required features data (scaler and encoder)
+COPY data/processed/features_random/train/scaler.pkl /app/data/processed/features_random/train/
+COPY data/processed/features_random/train/label_encoder.pkl /app/data/processed/features_random/train/
+
+# Copy ONLY the baseline model
+COPY models/baseline_random_best.keras /app/models/
+
+# Expose Streamlit port
+EXPOSE 8501
+
+# Start Streamlit application
+CMD ["streamlit", "run", "dashboard/app.py", "--server.port", "8501", "--server.address", "0.0.0.0"]

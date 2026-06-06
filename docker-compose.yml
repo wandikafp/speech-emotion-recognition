@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    container_name: ser-api
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+    environment:
+      - SER_MODEL_PATH=/app/models/baseline_random_best.keras
+
+  dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile.dashboard
+    container_name: ser-dashboard
+    ports:
+      - "8501:8501"
+    restart: unless-stopped
+    depends_on:
+      - api
+    environment:
+      - API_URL=http://api:8000
